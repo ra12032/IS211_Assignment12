@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Class Dashboard</title>
+</head>
+<body>
+    <h1>Class Dashboard</h1>
+
+    <p><a href="{{ url_for('login') }}">Log out</a></p>
+
+    <h2>Students</h2>
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>ID</th>
+            <th>First name</th>
+            <th>Last name</th>
+        </tr>
+        {% for s in students %}
+        <tr>
+            <!-- CLICKABLE ID -->
+            <td><a href="{{ url_for('view_results', student_id=s.id) }}">{{ s.id }}</a></td>
+            <td>{{ s.first_name }}</td>
+            <td>{{ s.last_name }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Quizzes</h2>
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>ID</th>
+            <th>Subject</th>
+            <th># Questions</th>
+            <th>Date</th>
+        </tr>
+        {% for q in quizzes %}
+        <tr>
+            <td>{{ q.id }}</td>
+            <td>{{ q.subject }}</td>
+            <td>{{ q.num_questions }}</td>
+            <td>{{ q.quiz_date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <p>
+        <a href="/student/add">Add Student</a> |
+        <a href="/quiz/add">Add Quiz</a> |
+        <a href="/results/add">Add Quiz Result</a>
+    </p>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Quiz</title>
+</head>
+<body>
+
+<h1>Add Quiz</h1>
+
+{% if error %}
+    <p style="color:red;">{{ error }}</p>
+{% endif %}
+
+<form method="post">
+    <label>
+        Subject:
+        <input type="text" name="subject" required>
+    </label>
+    <br><br>
+
+    <label>
+        Number of Questions:
+        <input type="number" name="num_questions" min="1" required>
+    </label>
+    <br><br>
+
+    <label>
+        Date:
+        <!-- HTML date input will give value like 2025-11-27 -->
+        <input type="date" name="quiz_date" required>
+    </label>
+    <br><br>
+
+    <button type="submit">Add Quiz</button>
+</form>
+
+<p><a href="{{ url_for('dashboard') }}">Back to Dashboard</a></p>
+
+</body>
+</html>
